@@ -234,8 +234,8 @@ elif menu == "Gráficos Interactivos":
     ax.set_title("Nube de Palabras de los Títulos de Noticias", fontsize=18, fontweight='bold')
     st.pyplot(fig4)
     
-elif menu == "Impacto del Proyecto":
-    st.subheader("📊 Impacto del Proyecto")
+elif menu == "Conclusiones del Proyecto":
+    st.subheader("📊 Conclusiones del Proyecto")
     st.write(""" 
     Este proyecto no solo cumplió con los objetivos planteados, sino que también proporcionó un impacto positivo tanto en el aprendizaje individual como colectivo. Los miembros del equipo tuvieron la oportunidad de poner en práctica sus conocimientos de programación, análisis de datos y visualización, lo que resultó en una comprensión más sólida de estas áreas.
     
