@@ -236,13 +236,51 @@ elif menu == "Gráficos Interactivos":
     
 elif menu == "Conclusiones del Proyecto":
     st.subheader("📊 Conclusiones del Proyecto")
-    st.write(""" 
-    Este proyecto no solo cumplió con los objetivos planteados, sino que también proporcionó un impacto positivo tanto en el aprendizaje individual como colectivo. Los miembros del equipo tuvieron la oportunidad de poner en práctica sus conocimientos de programación, análisis de datos y visualización, lo que resultó en una comprensión más sólida de estas áreas.
     
-    A nivel práctico, la plataforma desarrollada tiene el potencial de ser utilizada por entusiastas de la tecnología para mantenerse informados con las últimas noticias del sector. Además, la integración de herramientas analíticas, como los gráficos interactivos, agrega valor al ofrecer una visión más rica sobre las tendencias y opiniones dentro de las categorías tecnológicas.
-    
-    En resumen, este proyecto sirvió como una experiencia de aprendizaje integral, con un impacto positivo tanto en el desarrollo de habilidades técnicas como en la comprensión del trabajo en equipo en proyectos colaborativos.
-    """)
+    # Estilo de las conclusiones
+    st.markdown("""
+        <style>
+            .conclusions-header {
+                font-size: 24px;
+                font-weight: bold;
+                color: #0077b6;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            .conclusion-text {
+                background-color: #f1f1f1;
+                border-radius: 10px;
+                padding: 20px;
+                margin-bottom: 15px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                font-size: 18px;
+                color: #333;
+                line-height: 1.6;
+            }
+            .conclusion-text:hover {
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+                transform: scale(1.02);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
+    # Texto de las conclusiones con estilo
+    st.markdown("""
+        <div class="conclusions-header">
+            Conclusiones del Proyecto
+        </div>
+        <div class="conclusion-text">
+            Este proyecto no solo cumplió con los objetivos planteados, sino que también proporcionó un impacto positivo tanto en el aprendizaje individual como colectivo. Los miembros del equipo tuvieron la oportunidad de poner en práctica sus conocimientos de programación, análisis de datos y visualización, lo que resultó en una comprensión más sólida de estas áreas.
+        </div>
+        <div class="conclusion-text">
+            A nivel práctico, la plataforma desarrollada tiene el potencial de ser utilizada por entusiastas de la tecnología para mantenerse informados con las últimas noticias del sector. Además, la integración de herramientas analíticas, como los gráficos interactivos, agrega valor al ofrecer una visión más rica sobre las tendencias y opiniones dentro de las categorías tecnológicas.
+        </div>
+        <div class="conclusion-text">
+            En resumen, este proyecto sirvió como una experiencia de aprendizaje integral, con un impacto positivo tanto en el desarrollo de habilidades técnicas como en la comprensión del trabajo en equipo en proyectos colaborativos.
+        </div>
+    """, unsafe_allow_html=True)
+
 
 
 
