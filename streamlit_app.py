@@ -249,44 +249,67 @@ elif menu == "Conclusiones del Proyecto":
 elif menu == "Miembros del Proyecto":
     st.subheader("👥 Miembros del Proyecto")
     
-    # Estilo de la lista
+    # Estilo de la lista y el contenido
     st.markdown("""
         <style>
+            .project-header {
+                font-size: 24px;
+                font-weight: bold;
+                color: #0077b6;
+                margin-bottom: 20px;
+                text-align: center;
+            }
             .member-list {
-                list-style-type: none;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
                 padding: 0;
             }
-            .member-item {
-                font-size: 18px;
-                color: #4CAF50;
-                margin-bottom: 10px;
+            .member-card {
+                background-color: #f9f9f9;
+                border-radius: 12px;
+                padding: 20px;
+                width: 250px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+                text-align: center;
+            }
+            .member-card:hover {
+                transform: scale(1.05);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             }
             .member-name {
+                font-size: 22px;
                 font-weight: bold;
-                font-size: 20px;
+                color: #023e8a;
             }
             .member-role {
+                font-size: 18px;
+                color: #03045e;
                 font-style: italic;
-                color: #555;
+                margin-top: 5px;
             }
         </style>
     """, unsafe_allow_html=True)
 
-    # Miembros del proyecto con estilo
+    # Miembros del proyecto con tarjetas
     st.markdown("""
-        <ul class="member-list">
-            <li class="member-item">
+        <div class="project-header">
+            Miembros del Proyecto
+        </div>
+        <div class="member-list">
+            <div class="member-card">
                 <span class="member-name">Sergio Santillan Tsejem</span><br>
                 <span class="member-role">Miembro 1</span>
-            </li>
-            <li class="member-item">
+            </div>
+            <div class="member-card">
                 <span class="member-name">Brisa Cielo Paredes Ballenas</span><br>
                 <span class="member-role">Miembro 2</span>
-            </li>
-            <li class="member-item">
+            </div>
+            <div class="member-card">
                 <span class="member-name">Jorge Abel Sencara Maldonado</span><br>
                 <span class="member-role">Miembro 3</span>
-            </li>
-        </ul>
+            </div>
+        </div>
     """, unsafe_allow_html=True)
-
