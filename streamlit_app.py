@@ -3,6 +3,7 @@ import pandas as pd
 import altair as alt
 from streamlit_option_menu import option_menu
 import math  # Para calcular el número de páginas
+import plotly.express as px
 
 # Configuración de la página
 st.set_page_config(page_title="Plataforma de Noticias", layout="wide")
@@ -12,7 +13,7 @@ df = pd.read_csv("data/estructura_definitiva.csv")  # Asegúrate de ajustar la r
 
 # Barra lateral con logo y menú
 with st.sidebar:
-    st.image("imagenes/escudo-unalm.png", use_container_width=True)
+    st.image("imagenes/escudo_unalm.png", use_container_width=True)
 
     st.markdown(
         """
@@ -118,8 +119,121 @@ if menu == "Selector de Noticias":
     )
 
 elif menu == "Gráficos Interactivos":
-    st.subheader("📊 Gráficos Interactivos")
+    st.subheader("Gráficos Interactivos")
     st.write("Explora los gráficos generados a partir de las noticias.")
+
+    custom_colors = ['#4e85d5', '#25a146', '#f8fb14', '#e51313', '#e26ec4']
+
+    # Gráfico 1: Top 5 categorías con más noticias
+    top_categories = df['category'].value_counts().reset_index()
+    top_categories.columns = ['Category', 'Count']
+
+    fig1 = px.bar(top_categories.head(5), x='Category', y='Count', text='Count')
+
+    fig1.update_traces(marker_color=custom_colors[:len(top_categories.head(5))], textfont_size=14, textposition='outside')
+
+    fig1.update_layout(
+        title="<b>Top 5 Categorías con Más Noticias</b>",
+        font=dict(family="Arial, sans-serif", size=16, color="#2c3e50"),
+        template="plotly_white",
+        plot_bgcolor="#FAFAFA",
+        paper_bgcolor="#FFFFFF",
+        yaxis=dict(showgrid=False),
+        xaxis=dict(title=dict(font=dict(size=16, color="black"))),
+        showlegend=False
+    )
+
+    st.plotly_chart(fig1)
+
+    # Gráfico 2: Distribución de noticias por categoría
+    category_counts = df['category'].value_counts()
+
+    fig2 = px.pie(names=category_counts.index, values=category_counts.values, hole=0.3, 
+                 color=category_counts.index, color_discrete_sequence=custom_colors)
+
+    fig2.update_traces(
+        textinfo='percent+label',
+        pull=[0.1] * len(category_counts),
+        textfont=dict(size=14, color='white'),
+        marker=dict(line=dict(color='#FFFFFF', width=1))
+    )
+
+    fig2.update_layout(
+        title="<b>Distribución de Noticias por Categoría</b>",
+        title_font=dict(size=20, color='#333333'),
+        font=dict(family="Arial, sans-serif", size=14, color="#333333"),
+        template="plotly_white",
+        plot_bgcolor="#FFFFFF",
+        paper_bgcolor="#F4F4F4",
+        showlegend=True
+    )
+
+    st.plotly_chart(fig2)
+
+    # Gráfico 3: Top 10 fuentes de noticias
+    top_sources = df['source_label'].value_counts().head(10)
+
+    fig3 = px.bar(top_sources, x=top_sources.index, y=top_sources.values,
+                  title="Top 10 Fuentes por Noticias", labels={'x': 'Fuente', 'y': 'Número de Noticias'},
+                  color=top_sources.index, color_discrete_sequence=custom_colors)
+
+    fig3.update_layout(
+        template="plotly_white",
+        title="<b>Top 10 Fuentes por Noticias</b>",
+        font=dict(family="Arial, sans-serif", size=16, color="#2c3e50"),
+        xaxis=dict(tickangle=45, title=dict(font=dict(size=14, color="black"))),
+        yaxis=dict(title=dict(font=dict(size=14, color="black")), showgrid=False),
+        plot_bgcolor="#FAFAFA",
+        paper_bgcolor="#FFFFFF",
+        showlegend=False,
+        barmode='group',
+        xaxis_title="Fuente",
+        yaxis_title="Número de Noticias",
+        bargap=0.05,
+        bargroupgap=0.1,
+        height=500,
+        width=900
+    )
+
+    st.plotly_chart(fig3)
+
+    # Gráfico 4: Nube de palabras de los títulos de noticias
+    from wordcloud import WordCloud
+    import matplotlib.pyplot as plt
+    import random
+
+    # Definir la paleta de colores personalizada con el verde añadido
+    color_palette = ["#FFF700", "#FF1717", "#2917ED", "#25a146"]  # Amarillo, Rojo, Azul, Verde
+
+    # Función para asignar un color aleatorio de la paleta personalizada a cada palabra
+    def random_color_func(word, font_size, position, orientation, random_state=None, **kwargs):
+        return random.choice(color_palette)
+
+    # Obtener todos los títulos de las noticias
+    titles = df['title'].dropna().tolist()  # Obtener solo los títulos, asegurándonos de que no haya valores nulos
+
+    # Unir todos los títulos en un solo texto
+    text = " ".join(titles)
+
+    # Crear la nube de palabras con la paleta personalizada
+    wordcloud = WordCloud(
+        width=800,  # Ancho de la imagen
+        height=400,  # Alto de la imagen
+        background_color='white',  # Color de fondo
+        max_words=100,  # Número máximo de palabras a mostrar
+        color_func=random_color_func,  # Usar la función para asignar color aleatorio de la paleta
+        contour_color='black',  # Color del contorno de las palabras
+        contour_width=1  # Grosor del contorno de las palabras
+    ).generate(text)
+
+    # Mostrar la nube de palabras
+    st.subheader("Nube de Palabras de los Títulos de Noticias")
+    fig4, ax = plt.subplots(figsize=(10, 5))
+    ax.imshow(wordcloud, interpolation='bilinear')
+    ax.axis("off")  # Quitar los ejes
+    ax.set_title("Nube de Palabras de los Títulos de Noticias", fontsize=18, fontweight='bold')
+    st.pyplot(fig4)
+
 
 elif menu == "Miembros del Proyecto":
     st.subheader("👥 Miembros del Proyecto")
