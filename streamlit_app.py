@@ -248,8 +248,45 @@ elif menu == "Conclusiones del Proyecto":
 
 elif menu == "Miembros del Proyecto":
     st.subheader("👥 Miembros del Proyecto")
-    st.write(""" 
-    - **Miembro 1**: Sergio, Santillan Tsejem  
-    - **Miembro 2**: Brisa Cielo, Paredes Ballenas 
-    - **Miembro 3**: Jorge Abel, Sencara Maldonado   
-    """)
+    
+    # Estilo de la lista
+    st.markdown("""
+        <style>
+            .member-list {
+                list-style-type: none;
+                padding: 0;
+            }
+            .member-item {
+                font-size: 18px;
+                color: #4CAF50;
+                margin-bottom: 10px;
+            }
+            .member-name {
+                font-weight: bold;
+                font-size: 20px;
+            }
+            .member-role {
+                font-style: italic;
+                color: #555;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
+    # Miembros del proyecto con estilo
+    st.markdown("""
+        <ul class="member-list">
+            <li class="member-item">
+                <span class="member-name">Sergio Santillan Tsejem</span><br>
+                <span class="member-role">Miembro 1</span>
+            </li>
+            <li class="member-item">
+                <span class="member-name">Brisa Cielo Paredes Ballenas</span><br>
+                <span class="member-role">Miembro 2</span>
+            </li>
+            <li class="member-item">
+                <span class="member-name">Jorge Abel Sencara Maldonado</span><br>
+                <span class="member-role">Miembro 3</span>
+            </li>
+        </ul>
+    """, unsafe_allow_html=True)
+
