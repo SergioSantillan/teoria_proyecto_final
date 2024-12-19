@@ -249,7 +249,7 @@ elif menu == "Conclusiones del Proyecto":
 elif menu == "Miembros del Proyecto":
     st.subheader("👥 Miembros del Proyecto")
     st.write(""" 
-    - **Miembro 1**: Sergio Santillan Tsejem  
-    - **Miembro 2**: Brisa Cielo Paredes Ballenas 
-    - **Miembro 3**: Jorge Abel Sencara Maldonado   
+    - **Miembro 1**: Sergio, Santillan Tsejem  
+    - **Miembro 2**: Brisa Cielo, Paredes Ballenas 
+    - **Miembro 3**: Jorge Abel, Sencara Maldonado   
     """)
