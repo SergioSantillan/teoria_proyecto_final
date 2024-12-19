@@ -1,1 +1,13 @@
 streamlit
+streamlit-option-menu
+streamlit-reveal-slides
+plotly
+scikit-learn
+plotnine
+seaborn
+matplotlib
+folium
+streamlit-folium
+geopy
+tqdm
+streamlit-toggle-switch
