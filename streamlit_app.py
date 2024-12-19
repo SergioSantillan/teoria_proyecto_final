@@ -233,13 +233,23 @@ elif menu == "Gráficos Interactivos":
     ax.axis("off")  # Quitar los ejes
     ax.set_title("Nube de Palabras de los Títulos de Noticias", fontsize=18, fontweight='bold')
     st.pyplot(fig4)
+    
+elif menu == "Impacto del Proyecto":
+    st.subheader("📊 Impacto del Proyecto")
+    st.write(""" 
+    Este proyecto no solo cumplió con los objetivos planteados, sino que también proporcionó un impacto positivo tanto en el aprendizaje individual como colectivo. Los miembros del equipo tuvieron la oportunidad de poner en práctica sus conocimientos de programación, análisis de datos y visualización, lo que resultó en una comprensión más sólida de estas áreas.
+    
+    A nivel práctico, la plataforma desarrollada tiene el potencial de ser utilizada por entusiastas de la tecnología para mantenerse informados con las últimas noticias del sector. Además, la integración de herramientas analíticas, como los gráficos interactivos, agrega valor al ofrecer una visión más rica sobre las tendencias y opiniones dentro de las categorías tecnológicas.
+    
+    En resumen, este proyecto sirvió como una experiencia de aprendizaje integral, con un impacto positivo tanto en el desarrollo de habilidades técnicas como en la comprensión del trabajo en equipo en proyectos colaborativos.
+    """)
+
 
 
 elif menu == "Miembros del Proyecto":
     st.subheader("👥 Miembros del Proyecto")
     st.write(""" 
-    - **Miembro 1**: Analista de datos  
-    - **Miembro 2**: Especialista en visualización  
-    - **Miembro 3**: Ingeniero en IA  
-    - **Miembro 4**: Desarrollador web  
+    - **Miembro 1**: Sergio Santillan Tsejem  
+    - **Miembro 2**: Brisa Cielo Paredes Ballenas 
+    - **Miembro 3**: Jorge Abel Sencara Maldonado   
     """)
