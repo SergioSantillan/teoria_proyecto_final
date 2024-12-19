@@ -13,7 +13,7 @@ df = pd.read_csv("data/estructura_definitiva.csv")  # Asegúrate de ajustar la r
 
 # Barra lateral con logo y menú
 with st.sidebar:
-    st.image("imagenes/escudo_unalm.png", use_container_width=True)
+    st.image("imagenes/escudo-unalm.png", use_container_width=True)
 
     st.markdown(
         """
